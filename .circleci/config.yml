@@ -1,11 +1,51 @@
 version: 2.0
+
 jobs:
- build:
-   docker:
-     - image: alpine:3.7
-   steps:
-     - run:
-         name: The First Step
-         command: |
-           echo 'Hello World!'
-           echo 'This is the delivery pipeline'
+  checkout_code:
+    docker:
+      - image: circleci/ruby:2.4-node-jessie
+      - image: circleci/postgres:9.4.12-alpine
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      - command: echo checking out code
+
+  bundle_dependencies:
+    docker:
+      - image: circleci/ruby:2.4-node-jessie
+      - image: circleci/postgres:9.4.12-alpine
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      - command: echo bundle dependencies
+
+  rake_test:
+    docker:
+      - image: circleci/ruby:2.4-node-jessie
+      - image: circleci/postgres:9.4.12-alpine
+    working_directory: ~/circleci-demo-workflows
+    steps:
+      - command: echo testing
+
+  deploy:
+    machine:
+        enabled: true
+    working_directory: ~/circleci-demo-workflows    
+    steps:      
+      - run:
+          name: Deploy Master to Heroku
+          command: echo deploying now
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - bundle_dependencies:
+          requires:
+            - checkout_code
+      - rake_test:
+          requires:
+            - bundle_dependencies      
+      - deploy:
+          requires:
+            - rake_test
+            - bundle_dependencies

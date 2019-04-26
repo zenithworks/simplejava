@@ -3,6 +3,8 @@ version: 2.0
 jobs:
   checkout_code:
     working_directory: ~/circleci-demo-workflows
+    docker:
+     - image: alpine:3.7
     steps:
       - run:         
          command: echo 'Hello World!'         
@@ -10,12 +12,16 @@ jobs:
 
   bundle_dependencies:
     working_directory: ~/circleci-demo-workflows
+    docker:
+     - image: alpine:3.7
     steps:
       - run:         
          command: echo 'Hello bundle dependencies' 
 
   rake_test:
     working_directory: ~/circleci-demo-workflows
+    docker:
+     - image: alpine:3.7
     steps:
       - run:         
          command: echo 'Hello performing tests...' 

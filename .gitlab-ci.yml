@@ -1,17 +1,20 @@
-image: java:latest
-
 stages:
-  - build
-  - execute
+  - mybuild
+  - mytest
+  - mydeploy
 
+job 1:
+  stage: mybuild
+  script: echo build dependencies!!
 
-build:
-  stage: build
-  script: /usr/lib/jvm/java-8-openjdk-amd64/bin/javac HelloWorld.java
-  artifacts:
-    paths:
-     - HelloWorld.*
+job 2:
+  stage: mybuild
+  script: echo build jar!!
 
-execute:
-  stage: execute
-  script: /usr/lib/jvm/java-8-openjdk-amd64/bin/java HelloWorld
+job 3:
+  stage: mytest
+  script: echo run test!!
+
+job 4:
+  stage: mydeploy
+  script: echo deploy

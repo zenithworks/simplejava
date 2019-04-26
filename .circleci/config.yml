@@ -7,7 +7,9 @@ jobs:
       - image: circleci/postgres:9.4.12-alpine
     working_directory: ~/circleci-demo-workflows
     steps:
-      - command: echo checking out code
+    - run:         
+         command: echo 'Hello World!'         
+      
 
   bundle_dependencies:
     docker:
@@ -15,7 +17,8 @@ jobs:
       - image: circleci/postgres:9.4.12-alpine
     working_directory: ~/circleci-demo-workflows
     steps:
-      - command: echo bundle dependencies
+      - run:         
+         command: echo 'Hello bundle dependencies' 
 
   rake_test:
     docker:
@@ -23,16 +26,16 @@ jobs:
       - image: circleci/postgres:9.4.12-alpine
     working_directory: ~/circleci-demo-workflows
     steps:
-      - command: echo testing
+      - run:         
+         command: echo 'Hello bundle dependencies' 
 
   deploy:
     machine:
         enabled: true
     working_directory: ~/circleci-demo-workflows    
     steps:      
-      - run:
-          name: Deploy Master to Heroku
-          command: echo deploying now
+      - run:          
+          command: echo 'deploying now...'
 
 workflows:
   version: 2

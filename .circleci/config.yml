@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  jira: circleci/jira@1.0.0
+  jira: circleci/jira@1.0.5
 
 jobs:
   checkout_code:
@@ -44,6 +44,8 @@ workflows:
       - bundle_dependencies:
           requires:
             - checkout_code
+          post-steps:
+            - jira/notify
       - rake_test:
           requires:
             - bundle_dependencies      

@@ -45,7 +45,8 @@ workflows:
           requires:
             - checkout_code
           post-steps:
-            - jira/notify
+            - jira/notify:
+                job-type: build                
       - rake_test:
           requires:
             - bundle_dependencies      
@@ -53,3 +54,7 @@ workflows:
           requires:
             - rake_test
             - bundle_dependencies
+          post-steps:
+            - jira/notify:
+                job-type: deployment
+                environment-type: development

@@ -47,7 +47,7 @@ workflows:
           post-steps:
             - jira/notify:
                 token_name: "jira_app"
-                job-type: build                
+                job_type: build                
       - rake_test:
           requires:
             - bundle_dependencies      
@@ -58,6 +58,6 @@ workflows:
           post-steps:
             - jira/notify:
                 token_name: "jira_app"
-                job-type: deployment
+                job_type: deployment
                 environment-type: development
                 

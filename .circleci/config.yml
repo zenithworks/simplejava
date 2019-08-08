@@ -46,7 +46,7 @@ workflows:
             - checkout_code
           post-steps:
             - jira/notify:
-                token_name: "jira_app"
+                token_name: jira_app
                 job_type: build                
       - rake_test:
           requires:
@@ -57,7 +57,7 @@ workflows:
             - bundle_dependencies
           post-steps:
             - jira/notify:
-                token_name: "jira_app"
+                token_name: jira_app
                 job_type: deployment
                 environment_type: development
                 

@@ -1,4 +1,6 @@
-version: 2.0
+version: 2.1
+orbs:
+  jira: circleci/jira@1.0.0
 
 jobs:
   checkout_code:

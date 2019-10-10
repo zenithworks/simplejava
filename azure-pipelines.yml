@@ -1,0 +1,85 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+stages:
+- stage: Stage1
+  jobs:
+  - job: Phase_1
+    displayName: A
+    pool: server    
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_2
+    displayName: Agentless
+    pool: server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_3
+    displayName: C    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_4
+    displayName: D    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_5
+    displayName: e    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_11
+    displayName: A1
+    pool: server    
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_21
+    displayName: Agentless1
+    pool: server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_31
+    displayName: C1    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_41
+    displayName: D1    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_51
+    displayName: e1    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
+  - job: Phase_511
+    displayName: e11    
+    pool : server
+    steps:
+    - task: Delay@1
+      inputs:
+        delayForMinutes: '10'
